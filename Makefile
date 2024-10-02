@@ -27,11 +27,6 @@ Q:=@
 #.SILENT:
 endif # DO_MKDBG
 
-# dependency on the makefile itself
-ifeq ($(DO_ALLDEP),1)
-.EXTRA_PREREQS+=$(foreach mk, ${MAKEFILE_LIST},$(abspath ${mk}))
-endif # DO_ALLDEP
-
 MERMAID_SRC:=$(shell find mermaid -type f -and -name "*.mmd")
 MERMAID_BAS:=$(basename $(MERMAID_SRC))
 MERMAID_PNG:=$(addprefix $(OUT)/,$(addsuffix .png,$(MERMAID_BAS)))
@@ -91,3 +86,10 @@ $(MERMAID_SVG): $(OUT)/%.svg: %.mmd
 	$(info doing [$@])
 	$(Q)mkdir -p $(dir $@)
 	$(Q)pymakehelper only_print_on_error node_modules/.bin/mmdc -i $< -o $@
+
+##########
+# alldep #
+##########
+ifeq ($(DO_ALLDEP),1)
+.EXTRA_PREREQS+=$(foreach mk, ${MAKEFILE_LIST},$(abspath ${mk}))
+endif # DO_ALLDEP
