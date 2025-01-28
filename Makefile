@@ -74,15 +74,15 @@ clean_hard:
 ############
 # patterns #
 ############
-$(MERMAID_PNG): $(OUT)/%.png: %.mmd
+$(MERMAID_PNG): $(OUT)/%.png: %.mmd .mmdc.config.json
 	$(info doing [$@])
 	$(Q)mkdir -p $(dir $@)
 	$(Q)pymakehelper only_print_on_error node_modules/.bin/mmdc -p .mmdc.config.json -i $< -o $@
-$(MERMAID_PDF): $(OUT)/%.pdf: %.mmd
+$(MERMAID_PDF): $(OUT)/%.pdf: %.mmd .mmdc.config.json
 	$(info doing [$@])
 	$(Q)mkdir -p $(dir $@)
 	$(Q)pymakehelper only_print_on_error node_modules/.bin/mmdc -p .mmdc.config.json -i $< -o $@
-$(MERMAID_SVG): $(OUT)/%.svg: %.mmd
+$(MERMAID_SVG): $(OUT)/%.svg: %.mmd .mmdc.config.json
 	$(info doing [$@])
 	$(Q)mkdir -p $(dir $@)
 	$(Q)pymakehelper only_print_on_error node_modules/.bin/mmdc -p .mmdc.config.json -i $< -o $@
