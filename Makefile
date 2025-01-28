@@ -77,15 +77,15 @@ clean_hard:
 $(MERMAID_PNG): $(OUT)/%.png: %.mmd
 	$(info doing [$@])
 	$(Q)mkdir -p $(dir $@)
-	$(Q)pymakehelper only_print_on_error node_modules/.bin/mmdc -i $< -o $@
+	$(Q)pymakehelper only_print_on_error node_modules/.bin/mmdc -p .mmdc.config.json -i $< -o $@
 $(MERMAID_PDF): $(OUT)/%.pdf: %.mmd
 	$(info doing [$@])
 	$(Q)mkdir -p $(dir $@)
-	$(Q)pymakehelper only_print_on_error node_modules/.bin/mmdc -i $< -o $@
+	$(Q)pymakehelper only_print_on_error node_modules/.bin/mmdc -p .mmdc.config.json -i $< -o $@
 $(MERMAID_SVG): $(OUT)/%.svg: %.mmd
 	$(info doing [$@])
 	$(Q)mkdir -p $(dir $@)
-	$(Q)pymakehelper only_print_on_error node_modules/.bin/mmdc -i $< -o $@
+	$(Q)pymakehelper only_print_on_error node_modules/.bin/mmdc -p .mmdc.config.json -i $< -o $@
 
 ##########
 # alldep #
