@@ -1,16 +1,7 @@
-from typing import List
+""" python dependencies for this project """
 
-
-dev_requires: List[str] = [
-]
-config_requires: List[str] = [
-]
-install_requires: List[str] = [
-]
-build_requires: List[str] = [
-    "pymakehelper",
+build_requires: list[str] = [
     "pydmt",
+    "pymakehelper",
 ]
-test_requires: List[str] = [
-]
-requires = config_requires + install_requires + build_requires + test_requires
+requires = build_requires
